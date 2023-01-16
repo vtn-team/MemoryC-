@@ -3,6 +3,7 @@
 #include <chrono>
 
 #include "mempool.h"
+#include "operator.h"
 
 int main(int argc, char const* argv[])
 {
@@ -36,6 +37,8 @@ int main(int argc, char const* argv[])
 
     std::cout << "normal new:" << elapsed << "microsec" << std::endl;
 
+    int* leaktest = NEW int;
+
     //メモリ上の配置を見る
     /*
     int* a = pool->New<int>();
@@ -62,6 +65,9 @@ int main(int argc, char const* argv[])
     myVector.push_back(3);
     myVector.push_back(4);
     */
+
+    //リークチェック
+    //leakdump();
 
     return 0;
 }
